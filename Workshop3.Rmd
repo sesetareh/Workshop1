@@ -13,11 +13,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
+library(skimr)
 
 survey <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv')
 
 #write_csv(survey,file="survey_data.csv")
 write_csv(survey,"survey_data.csv")
+
+survey%>%glimpse()
+survey%>%skim()
+
+```
+
+### Data wrangling
+
+#### Filter
+
+```{r}
+survey%>%
+  filter(country=="Australia")
+
+survey%>%
+  filter(country=="Australia" | country=="australia")
+
 
 ```
 
